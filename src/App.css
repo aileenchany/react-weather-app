@@ -28,6 +28,7 @@
 h1 {
   text-align: center;
   font-family: "Poiret One", cursive;
+  font-size: 32px;
   background-color: #aa771c;
   background-image: linear-gradient(
     135deg,
@@ -49,4 +50,44 @@ footer {
   margin: 0 auto;
   padding: 0;
   text-align: center;
+}
+
+.info {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.location {
+  font-family: "Poiret One", cursive;
+  font-size: 40px;
+  background-color: #aa771c;
+  background-image: linear-gradient(
+    135deg,
+    #d8ab50,
+    #fcf6ba,
+    #d39e2c,
+    #fbf5b7,
+    #aa771c
+  );
+  background-size: 100%;
+  margin-bottom: 0;
+  -webkit-text-stroke: 0.5px #797675;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+.main-icon {
+  height: 130px;
+  width: 130px;
+}
+
+.temperature {
+  font-size: 58px;
+  font-weight: 400;
+}
+
+.units {
+  font-size: 14px;
+  font-weight: bold;
 }
