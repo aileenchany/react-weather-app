@@ -44,3 +44,9 @@ h1 {
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
 }
+
+footer {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
