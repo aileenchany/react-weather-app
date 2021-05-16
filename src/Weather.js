@@ -7,9 +7,15 @@ export default function Weather() {
             <div className="row">
              {/* search section */}
             <form>
-              <input type="search" placeholder="Type a city..." />
-              <button type="submit">Search</button>
-              <button type="submit">Location</button>
+                <div className="row" >
+                    <div className="col-7">
+                        <input type="search" placeholder="Type a city..." autoFocus="on" autoComplete="off" className="form-control" />
+                    </div>
+                    <div className="col">
+                        <button type="submit" className="btn btn-outline-secondary search-button">Search</button>                    
+                        <button type="submit" className="btn btn-outline-secondary location-button">Location</button>
+                    </div> 
+                </div> 
             </form>
           </div>
           {/* main weather section */}
@@ -26,7 +32,7 @@ export default function Weather() {
             </div>          
           </div>
           {/* weather conditions */}
-          <div className="row">
+          <div className="row weather-conditions">
             <div className="col-3">
               Feels like: 72°
             </div>

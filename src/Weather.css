@@ -1,8 +1,18 @@
-.info {
+.Weather form {
+  margin: 15px auto;
+}
+
+.Weather .btn-outline-secondary {
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(206, 212, 218);
+  border-radius: 4px;
+}
+
+.Weather .info {
   list-style-type: none;
   padding-left: 0;
 }
-.location {
+.Weather .location {
   font-family: "Poiret One", cursive;
   font-size: 40px;
   background-color: #aa771c;
@@ -22,17 +32,32 @@
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
 }
-.main-icon {
+.Weather .main-icon {
   height: 130px;
   width: 130px;
+  line-height: 64px;
+  position: relative;
+  top: -18px;
 }
 
-.temperature {
-  font-size: 58px;
+.Weather .temperature {
+  font-size: 64px;
   font-weight: 400;
+  line-height: 64px;
+  position: relative;
+  top: -6px;
 }
 
-.units {
+.Weather .search-button {
+  margin-right: 25px;
+}
+.Weather .weather-conditions {
+  margin: 10px auto;
+}
+
+.Weather .units {
   font-size: 14px;
   font-weight: bold;
+  position: relative;
+  top: -40px;
 }
