@@ -13,7 +13,7 @@ export default function App() {
           <hr />
         </div>
       </div>
-      <footer><a href="https://github.com/aileenchany/react-weather-app" target="_blank">Open-source</a> code by <a href="https://www.linkedin.com/in/aileen-chanmiranda/" target="_blank">ACM</a></footer>
+      <footer><a href="https://github.com/aileenchany/react-weather-app" target="_blank" rel="noreferrer">Open-source</a> code by <a href="https://www.linkedin.com/in/aileen-chanmiranda/" target="_blank" rel="noreferrer">ACM</a></footer>
     </div>
   );
 }
