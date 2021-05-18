@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FormattedDate from "./FormattedDate.js";
 import axios from "axios";
 import Loader from "react-loader-spinner";
 import "./Weather.css";
@@ -8,12 +9,11 @@ export default function Weather() {
     const [weather, setWeather] = useState({ready: false});
     
     function getData(response) {
-        console.log(response.data);
         setWeather({
             ready: true,
             city: response.data.name,
             country: response.data.sys.country,
-            date: "Sat, 5/15, 15:52 pm",
+            date: new Date(response.data.dt * 1000), //new Date() collects the data for the date & we're storing it inside weather.date
             description: response.data.weather[0].description,
             feels_like: response.data.main.feels_like,
             humidity: response.data.main.humidity,
@@ -77,7 +77,9 @@ export default function Weather() {
                     <div className="col-6">
                     <p className="location">{weather.city}, {weather.country}</p>
                     <ul className="info">
-                        <li>Last updated: {weather.date}</li>
+                        <li>
+                            Last updated: <FormattedDate date={weather.date} /> {/* Here we create the Date component and we're passing the date data as props */}
+                        </li> 
                         <li className="text-capitalize">{weather.description}</li>
                     </ul>
                     </div>
