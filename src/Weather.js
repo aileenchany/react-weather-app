@@ -1,13 +1,28 @@
 import React, { useState } from "react";
-import FormattedDate from "./FormattedDate.js";
+import WeatherInfo from "./WeatherInfo.js";
 import axios from "axios";
 import Loader from "react-loader-spinner";
 import "./Weather.css";
 
-export default function Weather() {
-    
+export default function Weather(props) {
+    const [city, setCity] = useState(props.defaultCity);
     const [weather, setWeather] = useState({ready: false});
+
+    function searchCity() { //Note to self - the API call must always be inside a function, otherwise it's an endless loop
+        let apiKey = "f9ed2779c7a88244e3c6c97a1ad830b5";
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+        axios.get(apiUrl).then(getData);
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        searchCity();
+    }
     
+    function updateCity(event) {
+        setCity(event.target.value);
+    }
+
     function getData(response) {
         setWeather({
             ready: true,
@@ -30,10 +45,10 @@ export default function Weather() {
             <div className="Weather">
                 <div className="row">
                 {/* search section */}
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="row" >
                             <div className="col-7">
-                                <input type="search" placeholder="Type a city..." autoFocus="on" autoComplete="off" className="form-control" />
+                                <input type="search" placeholder="Type a city..." autoFocus="on" autoComplete="off" onChange={updateCity} className="form-control" />
                             </div>
                             <div className="col">
                                 <button type="submit" className="btn btn-outline-secondary search-button"><svg
@@ -72,43 +87,11 @@ export default function Weather() {
                         </div> 
                     </form>
                 </div>
-                {/* main weather section */}
-                <div className="row">
-                    <div className="col-6">
-                    <p className="location">{weather.city}, {weather.country}</p>
-                    <ul className="info">
-                        <li>
-                            Last updated: <FormattedDate date={weather.date} /> {/* Here we create the Date component and we're passing the date data as props */}
-                        </li> 
-                        <li className="text-capitalize">{weather.description}</li>
-                    </ul>
-                    </div>
-                    <div className="col-6">
-                    <img src={weather.icon} alt={weather.description} className="main-icon" /> <span className="temperature">{Math.round(weather.temperature)}</span><span className="units"> <a href="/">°F</a> | <a href="/">°C</a></span> 
-                    </div>          
-                </div>
-                {/* weather conditions */}
-                <div className="row weather-conditions">
-                    <div className="col-3">
-                    Feels like: {Math.round(weather.feels_like)}°
-                    </div>
-                    <div className="col-3">
-                    H/L: {Math.round(weather.temp_max)}° {Math.round(weather.temp_min)}°
-                    </div>
-                    <div className="col-3">
-                    Humidity: {weather.humidity}%
-                    </div>
-                    <div className="col-3">
-                    Winds: {Math.round(weather.wind)} mph
-                    </div>
-                </div>
+                <WeatherInfo data={weather} />
             </div>
         );   
-   } else { //making an API call inside a conditional if statement will avoid an endless API call loop
-        let defaultCity = "New York";
-        let apiKey = "f9ed2779c7a88244e3c6c97a1ad830b5";
-        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=${apiKey}&units=imperial`;
-        axios.get(apiUrl).then(getData);
+   } else { 
+        searchCity();
 
         return (
             <Loader
