@@ -25,9 +25,11 @@ export default function Weather(props) {
     }
 
     function getData(response) {
+        console.log(response.data);
         setWeather({
             ready: true,
             city: response.data.name,
+            coordinates: response.data.coord,
             country: response.data.sys.country,
             date: new Date(response.data.dt * 1000), //new Date() collects the data for the date & we're storing it inside weather.date
             description: response.data.weather[0].description,
@@ -90,7 +92,7 @@ export default function Weather(props) {
                 </div>
                 <WeatherInfo data={weather} />
                 <hr />
-                <WeeklyForecast />
+                <WeeklyForecast coordinates={weather.coordinates}/>
             </div>
         );   
    } else { 
