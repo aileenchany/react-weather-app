@@ -9,6 +9,11 @@
 .Weather .search-button {
   margin-right: 25px;
 }
+.Weather .search-button:hover,
+.Weather .location-button:hover {
+  background: #ebeced;
+  border: 1px solid white;
+}
 .Weather .location-icon {
   fill: url(#my-gold-gradient-2);
 }
