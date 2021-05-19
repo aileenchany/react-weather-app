@@ -10,13 +10,13 @@ export default function WeatherInfo(props) {
             {/* main weather section */}
                 <div className="row">
                     <div className="col-6">
-                    <p className="location">{props.data.city}, {props.data.country}</p>
-                    <ul className="info">
-                        <li>
-                            Last updated: <FormattedDate date={props.data.date} /> {/* Here we create the Date component and we're passing the date data as props */}
-                        </li> 
-                        <li className="text-capitalize">{props.data.description}</li>
-                    </ul>
+                        <p className="location">{props.data.city}, {props.data.country}</p>
+                        <div className="info">
+                            <div>
+                                Last updated: <FormattedDate date={props.data.date} /> {/* Here we create the Date component and we're passing the date data as props */}
+                            </div> 
+                            <div className="text-capitalize">{props.data.description}</div>
+                        </div>
                     </div>
                     <div className="col-6 padding">
                         <WeatherIcon code={props.data.icon} size={55} />

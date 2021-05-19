@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import DailyForecast from "./DailyForecast.js";
 import axios from "axios";
 import "./WeeklyForecast.css";
@@ -6,6 +6,11 @@ import "./WeeklyForecast.css";
 export default function WeeklyForecast(props) {
     const [loaded, setLoaded] = useState(false);
     const [forecast, setForecast] = useState(null);
+
+    //useEffect is a state manager that allows us to update something after the page has already loaded
+    useEffect(() => {
+        setLoaded(false);
+    }, [props.coordinates]);
 
     function handleResponse(response) {
         setForecast(response.data.daily); //here we store the weekly forecast inside the "forecast" state manager
@@ -23,6 +28,8 @@ export default function WeeklyForecast(props) {
                                 <DailyForecast data={dailyForecast} />
                             </div> 
                         );
+                    } else {
+                        return null;
                     }
                 })}
                 </div>   

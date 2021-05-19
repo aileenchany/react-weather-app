@@ -42,5 +42,6 @@
   top: -40px;
 }
 .WeatherInfo .weather-conditions {
-  margin: 10px auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
