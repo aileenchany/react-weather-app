@@ -22,12 +22,11 @@
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
 }
-.WeatherInfo .main-icon {
-  height: 130px;
-  width: 130px;
-  line-height: 64px;
-  position: relative;
-  top: -18px;
+.WeatherInfo canvas {
+  margin-right: 10px;
+}
+.WeatherInfo .padding {
+  padding-top: 15px;
 }
 .WeatherInfo .temperature {
   font-size: 64px;
