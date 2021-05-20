@@ -2,12 +2,22 @@ import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo.js";
 import WeeklyForecast from "./WeeklyForecast.js";
 import axios from "axios";
-import Loader from "react-loader-spinner";
 import "./Weather.css";
 
 export default function Weather(props) {
     const [city, setCity] = useState(props.defaultCity);
     const [weather, setWeather] = useState({ready: false});
+
+    function searchLocation(position) {
+        let apiKey = "f9ed2779c7a88244e3c6c97a1ad830b5";
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
+        axios.get(apiUrl).then(getData);
+    }
+
+    function getLocation(event) {
+        event.preventDefault();
+        navigator.geolocation.getCurrentPosition(searchLocation);
+    }
 
     function searchCity() { //Note to self - the API call must always be inside a function, otherwise it's an endless loop
         let apiKey = "f9ed2779c7a88244e3c6c97a1ad830b5";
@@ -53,7 +63,7 @@ export default function Weather(props) {
                                 <input type="search" placeholder="Type a city..." autoFocus="on" autoComplete="off" onChange={updateCity} className="form-control" />
                             </div>
                             <div className="col">
-                                <button type="submit" className="btn btn-outline-secondary search-button"><svg
+                                <button type="submit" className="btn btn-outline-secondary search-button" value="search"><svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
@@ -69,7 +79,7 @@ export default function Weather(props) {
                             <stop offset="100%" stopColor="#aa771c" />
                         </linearGradient>
                         </svg></button>                    
-                                <button type="submit" className="btn btn-outline-secondary location-button"><svg
+                                <button type="submit" className="btn btn-outline-secondary location-button" onClick={getLocation} value="location"><svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
@@ -97,14 +107,6 @@ export default function Weather(props) {
    } else { 
         searchCity();
 
-        return (
-            <Loader
-        type="Rings"
-        color="#00BFFF"
-        height={300}
-        width={300}
-        timeout={3000} //3 secs
-      />
-        );
+        return null;
    }       
 } 

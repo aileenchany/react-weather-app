@@ -13,7 +13,7 @@ export default function WeatherInfo(props) {
                         <p className="location">{props.data.city}, {props.data.country}</p>
                         <div className="info">
                             <div>
-                                Last updated: <FormattedDate date={props.data.date} /> {/* Here we create the Date component and we're passing the date data as props */}
+                                Last Updated: <FormattedDate date={props.data.date} /> {/* Here we create the Date component and we're passing the date data as props */}
                             </div> 
                             <div className="text-capitalize">{props.data.description}</div>
                         </div>
