@@ -12,7 +12,7 @@ export default function App() {
           <Weather defaultCity="New York" />
         </div>
       </div>
-      <footer><a href="https://github.com/aileenchany/react-weather-app" target="_blank" rel="noreferrer">Open-source</a> code by <a href="https://www.linkedin.com/in/aileen-chanmiranda/" target="_blank" rel="noreferrer">ACM</a></footer>
+      <footer><a href="https://github.com/aileenchany/react-weather-app" target="_blank" rel="noreferrer">Open-source</a> code by <a href="https://www.linkedin.com/in/aileen-chanmiranda/" target="_blank" rel="noreferrer">ACM</a> and hosted on <a href="https://vigorous-banach-36c0b8.netlify.app/" target="_blank" rel="noreferrer">Netlify</a>.</footer>
     </div>
   );
 }
