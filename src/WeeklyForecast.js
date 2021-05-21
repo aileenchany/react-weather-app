@@ -30,16 +30,16 @@ export default function WeeklyForecast(props) {
             <div className="WeeklyForecast">
                 <div className="row">
                     {forecast.map((dailyForecast, index) => {
-                    if(index < 5) {
-                        return (
-                            <div className="col">
-                                <DailyForecast data={dailyForecast} />
-                            </div> 
-                        );
-                    } else {
-                        return null;
-                    }
-                })}
+                        if(index < 5) {
+                            return (
+                                <div className="col">
+                                    <DailyForecast data={dailyForecast} unit={props.unit} />
+                                </div> 
+                            );
+                        } else {
+                            return null;
+                        }
+                    })}
                 </div>   
             </div>
          ) ;
