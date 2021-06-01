@@ -32,7 +32,7 @@ export default function WeeklyForecast(props) {
                     {forecast.map((dailyForecast, index) => {
                         if(index < 5) {
                             return (
-                                <div className="col">
+                                <div className="col" key={index} >
                                     <DailyForecast data={dailyForecast} unit={props.unit} />
                                 </div> 
                             );
